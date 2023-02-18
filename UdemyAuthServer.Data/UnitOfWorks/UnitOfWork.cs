@@ -8,7 +8,7 @@ using UdemyAuthServer.Data.Contexts;
 
 namespace UdemyAuthServer.Data.UnitOfWorks
 {
-    public class UnitOfWork : IUnitOFWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly AppDbContext _context;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UdemyAuthServer.Core.UnitOfWork
 {
-    public interface IUnitOFWork
+    public interface IUnitOfWork
     {
         Task CommitAsync();
         void Commit();
