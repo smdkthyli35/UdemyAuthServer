@@ -1,4 +1,5 @@
 using SharedLibrary.Configurations;
+using UdemyAuthServer.Core.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddControllers();
 
 builder.Services.Configure<CustomTokenOption>(builder.Configuration.GetSection("TokenOption"));
 
+builder.Services.Configure<Client>(builder.Configuration.GetSection("Clients"));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
