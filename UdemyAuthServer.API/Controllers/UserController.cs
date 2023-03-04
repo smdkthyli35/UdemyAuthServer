@@ -20,7 +20,8 @@ namespace UdemyAuthServer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateUserDto createUserDto)
         {
-            return ActionResultInstance(await _userService.CreateUserAsync(createUserDto));
+            var result = await _userService.CreateUserAsync(createUserDto);
+            return ActionResultInstance(result);
         }
 
         [HttpGet]
