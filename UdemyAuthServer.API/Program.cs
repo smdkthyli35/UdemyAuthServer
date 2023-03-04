@@ -8,6 +8,7 @@ using UdemyAuthServer.Core.Repositories;
 using UdemyAuthServer.Core.Services;
 using UdemyAuthServer.Core.UnitOfWork;
 using UdemyAuthServer.Data.Contexts;
+using UdemyAuthServer.Data.Repositories;
 using UdemyAuthServer.Data.UnitOfWorks;
 using UdemyAuthServer.Service.Services;
 
@@ -17,12 +18,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(IGenericRepository<>));
-builder.Services.AddScoped(typeof(IServiceGeneric<,>), typeof(GenericService<,>));
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IServiceGeneric<,>), typeof(GenericService<,>));
 
 builder.Services.Configure<CustomTokenOption>(builder.Configuration.GetSection("TokenOption"));
 builder.Services.Configure<List<Client>>(builder.Configuration.GetSection("Clients"));
@@ -33,7 +34,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"), opt =>
     {
-        opt.MigrationsAssembly(typeof(AppDbContext).Namespace);
+        opt.MigrationsAssembly("UdemyAuthServer.Data");
     });
 });
 
