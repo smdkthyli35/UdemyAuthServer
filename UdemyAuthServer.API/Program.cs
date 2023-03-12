@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SharedLibrary.Configurations;
+using SharedLibrary.Services;
 using UdemyAuthServer.Core.Configuration;
 using UdemyAuthServer.Core.Models;
 using UdemyAuthServer.Core.Repositories;
